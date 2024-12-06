@@ -9,11 +9,9 @@ void init()
 	glClearColor(0.5, 0.5, 0.5, 0);// color of window background
 	glOrtho(0, MSZ, 0, MSZ, -1, 1); // set the coordinates system
 
-	srand(time(0));
 
 	SetupMaze();
 }
-
 void display()
 {
 	glClear(GL_COLOR_BUFFER_BIT); // clean frame buffer
@@ -51,8 +49,6 @@ void menu(int choice) {
 
 int main(int argc, char* argv[]) 
 {
-
-	srand(time(0));
 
 	printf("%d \t %d\n", START_ROW1, START_COL1);
 	printf("%d \t %d\n", START_ROW2, START_COL2);

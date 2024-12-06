@@ -9,6 +9,8 @@
 #include "glut.h"
 #include <iostream>
 #include <queue>
+#include <random>
+
 using namespace std;
 
 const int WIDTH = 800;
@@ -25,10 +27,10 @@ const int GRAY = 5;
 const int YELLOW = 6;
 const int BLACK = 7;
 
-const int START_ROW1 = 25;
-const int START_COL1 = 25;
-const int START_ROW2 = 75;
-const int START_COL2 = 75;
+extern int START_ROW1;
+extern int START_COL1;
+extern int START_ROW2;
+extern int START_COL2;
 
 extern int maze[MSZ][MSZ];
 
@@ -36,5 +38,13 @@ extern bool runBFS;
 
 extern queue <Cell*> grays;
 extern queue <Cell*> yellows;
+
+
+inline int generateRandomInt(int min, int max) {
+    static std::random_device rd;      // Random device
+    static std::mt19937 gen(rd());     // Mersenne Twister engine
+    std::uniform_int_distribution<> dis(min, max);
+    return dis(gen);
+}
 
 #endif //def

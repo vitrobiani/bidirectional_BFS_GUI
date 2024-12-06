@@ -10,8 +10,4 @@ bool CheckNeighbor(int row, int col, Cell* pCurrent, int toCheck, int toMark, qu
 
 void RunBFSIteration(queue<Cell*>& q, int colour, queue<Cell*>& opp_q);
 
-//void RunBFSIteration2();
-//
-//bool CheckNeighbor2(int row, int col, Cell* pCurrent);
-
-#endif // !BNF
+#endif // !BFS

@@ -1,5 +1,10 @@
 #include "maze.h";
 int maze[MSZ][MSZ] = {0};
+int START_ROW1 = generateRandomInt(0, MSZ - 1);
+int START_COL1 = generateRandomInt(0, MSZ - 1);
+int START_ROW2 = generateRandomInt(0, MSZ - 1);
+int START_COL2 = generateRandomInt(0, MSZ - 1);
+
 
 void SetupMaze() {
 	int i, j;
@@ -18,14 +23,14 @@ void SetupMaze() {
 		{
 			if (i % 2 == 1) // mostly spaces
 			{
-				if (rand() % 10 > 4) // 80%
+				if (rand() % 10 > 2) // 80%
 					maze[i][j] = SPACE;
 				else
 					maze[i][j] = WALL;
 			}
 			else // mostly walls
 			{
-				if (rand() % 10 >= 8) // 60%
+				if (rand() % 10 >= 6) // 60%
 					maze[i][j] = WALL;
 				else
 					maze[i][j] = SPACE;
@@ -62,7 +67,7 @@ void ShowMaze()
 				glColor3d(1, 0, 0); // red
 				break;
 			case PATH:
-				glColor3d(1, 0, 1); // magenta
+				glColor3d(1, 0.4 , 1); // magenta
 				break;
 			case GRAY:
 				glColor3d(0, 1, 0); // green

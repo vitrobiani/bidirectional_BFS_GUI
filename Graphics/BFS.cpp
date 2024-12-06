@@ -2,7 +2,7 @@
 bool runBFS = false;
 
 void RestorePath(Cell* pc) {
-	while (pc != nullptr)
+	while (pc->getParent() != nullptr)
 	{
 		maze[pc->getRow()][pc->getCol()] = PATH;
 		pc = pc->getParent();
@@ -16,8 +16,7 @@ bool CheckNeighbor(int row, int col, Cell* pCurrent, int toCheck, int toMark, qu
 		printf("on row: %d \t col: %d", row, col);
 		RestorePath(pCurrent);
 
-
-
+		// restoring path from the other side
 		Cell* y = opp_q.front();
 		while (!opp_q.empty()) {
 			if (y->getRow() == row && y->getCol() == col) {
@@ -27,8 +26,6 @@ bool CheckNeighbor(int row, int col, Cell* pCurrent, int toCheck, int toMark, qu
 			y = opp_q.front();
 		}
 		RestorePath(y);
-
-
 
 		return false;
 	}
@@ -49,7 +46,7 @@ void RunBFSIteration(queue<Cell*>& q, int colour, queue<Cell*>& opp_q) {
 	if (q.empty())
 	{
 		runBFS = false;
-		cout << "There is no solution. Grays is empty\n";
+		cout << "There is no solution.\n";
 		return;
 	}
 	else // grays is not empty
@@ -78,58 +75,3 @@ void RunBFSIteration(queue<Cell*>& q, int colour, queue<Cell*>& opp_q) {
 		
 	}
 }
-
-//void RunBFSIteration2() {
-//	Cell* pCurrent;
-//	int row, col;
-//	bool go_on = true;
-//
-//	if (yellows.empty())
-//	{
-//		runBFS = false;
-//		cout << "There is no solution. Yellows is empty\n";
-//		return;
-//	}
-//	else // yellows is not empty
-//	{
-//		pCurrent = yellows.front();
-//		yellows.pop(); // extract the first element from grays
-//		// 1. paint pCurrent black
-//		row = pCurrent->getRow();
-//		col = pCurrent->getCol();
-//		if (maze[row][col] != START)
-//			maze[row][col] = YELLOW;
-//		// 2. check all the neighbors of pCurrent
-//		// go up
-//		if (maze[row + 1][col] == SPACE || maze[row + 1][col] == BLACK)
-//			go_on = CheckNeighbor2(row + 1, col, pCurrent);
-//		// down
-//		if(go_on && (maze[row - 1][col] == SPACE || maze[row - 1][col] == BLACK))
-//			go_on = CheckNeighbor2(row - 1, col, pCurrent);
-//		// left
-//		if (go_on && (maze[row ][col- 1] == SPACE || maze[row ][col- 1] == BLACK))
-//			go_on = CheckNeighbor2(row , col- 1, pCurrent);
-//		// right
-//		if (go_on && (maze[row][col +1] == SPACE || maze[row][col + 1] == BLACK))
-//			go_on = CheckNeighbor2(row, col + 1, pCurrent);
-//		
-//	}
-//}
-//
-//bool CheckNeighbor2(int row, int col, Cell* pCurrent) {
-//	if (maze[row][col] == BLACK)
-//	{
-//		runBFS = false;
-//		cout << "The solution has been found. \n";
-//		printf("on row: %d \t col: %d", row, col);
-//		RestorePath(pCurrent);
-//		return false;
-//	}
-//	else // maze[row][col] must be SPACE (WHITE)
-//	{
-//		Cell* pc = new Cell(row, col, pCurrent);
-//		maze[row][col] = YELLOW;
-//		yellows.push(pc);
-//		return true;
-//	}
-//}
