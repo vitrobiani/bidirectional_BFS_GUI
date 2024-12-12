@@ -50,10 +50,6 @@ void menu(int choice) {
 int main(int argc, char* argv[]) 
 {
 
-	printf("%d \t %d\n", START_ROW1, START_COL1);
-	printf("%d \t %d\n", START_ROW2, START_COL2);
-
-
 	glutInit(&argc, argv);
 	// definitions for visual memory (Frame buffer) and double buffer
 	glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE);

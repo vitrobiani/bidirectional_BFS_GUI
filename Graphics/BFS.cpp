@@ -13,7 +13,6 @@ bool CheckNeighbor(int row, int col, Cell* pCurrent, int toCheck, int toMark, qu
 	if (maze[row][col] == toCheck) {
 		runBFS = false; 
 		cout << "The solution has been found. \n";
-		printf("on row: %d \t col: %d", row, col);
 		RestorePath(pCurrent);
 
 		// restoring path from the other side

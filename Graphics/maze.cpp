@@ -1,7 +1,7 @@
 #include "maze.h";
 int maze[MSZ][MSZ] = {0};
-int START_ROW1 = generateRandomInt(0, MSZ - 1);
-int START_COL1 = generateRandomInt(0, MSZ - 1);
+int START_ROW1 = MSZ / 2;
+int START_COL1 = MSZ / 2;
 int START_ROW2 = generateRandomInt(0, MSZ - 1);
 int START_COL2 = generateRandomInt(0, MSZ - 1);
 
